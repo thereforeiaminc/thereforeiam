@@ -1,79 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Therefore I Am — ∴IA</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <!-- Mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Basic styling -->
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 4rem auto;
-      max-width: 720px;
-      padding: 0 1rem;
-      line-height: 1.6;
-      color: #000;
-      background: #fff;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .mark {
-      font-size: 3rem;
-      margin: 2rem 0;
-    }
-
-    h2 {
-      margin-top: 3rem;
-      font-weight: 600;
-    }
-
-    a {
-      color: #000;
-      text-decoration: underline;
-    }
-
-    footer {
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #444;
-    }
-  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>∴IA | Therefore I Am</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .serif {
+        font-family: 'Playfair Display', serif;
+      }
+      @keyframes soft-pulse {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        50% {
+          transform: scale(1.02);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+      }
+      .animate-soft-pulse {
+        animation: soft-pulse 3s infinite ease-in-out;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
 </head>
-
-<body>
-
-  <h1>Therefore I Am</h1>
-
-  <div class="mark">∴IA</div>
-
-  <p><strong>Human-Made Certification</strong></p>
-
-  <h2>Active Standard</h2>
-
-  <p>
-    <a href="IA-ORIGIN-v1.0.pdf">
-      ∴IA / ORIGIN — Human Creative Origin Standard v1.0
-    </a>
-  </p>
-
-  <p>Published: 2025-12-25</p>
-
-  <footer>
-    <p>
-      ∴IA is a voluntary certification mark and not a government authority or legal determination.
-    </p>
-  </footer>
-
-</body>
+  <body class="bg-stone-50 text-stone-900">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
