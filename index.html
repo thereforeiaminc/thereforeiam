@@ -1,376 +1,183 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>∴IA | Therefore I Am</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    
-    <!-- Fonts & Icons -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>∴IA | Therefore I Am</title>
 
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .serif { font-family: 'Playfair Display', serif; }
-        
-        .view-section { display: none; }
-        .view-section.active { display: block; animation: fadeIn 0.6s ease-out; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 
-        .animate-soft-pulse {
-            animation: soft-pulse 3s infinite ease-in-out;
-        }
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        @keyframes soft-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
-            50% { transform: scale(1.02); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
-        }
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
 
-        #mobile-menu {
-            transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
-        }
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
 
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
-  }
-}
-</script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .serif { font-family: 'Playfair Display', serif; }
+
+    .view-section { display: none; }
+    .view-section.active { display: block; animation: fadeIn 0.5s ease-out; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-soft-pulse {
+      animation: soft-pulse 3s infinite ease-in-out;
+    }
+
+    @keyframes soft-pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+  </style>
 </head>
-<body class="bg-stone-50 text-stone-900 selection:bg-stone-900 selection:text-white">
 
-    <!-- Header -->
-    <header class="sticky top-0 z-[100] bg-stone-50/95 backdrop-blur-md border-b border-stone-200">
-        <nav class="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between relative">
-            <div class="flex items-center space-x-2 md:space-x-3 cursor-pointer group z-[110]" onclick="showView('home')">
-                <span class="text-2xl md:text-3xl font-bold tracking-tighter group-hover:scale-105 transition-transform">∴IA</span>
-                <span class="uppercase tracking-[0.2em] text-[10px] md:text-sm font-black text-stone-900 group-hover:opacity-70 transition-opacity whitespace-nowrap">Therefore I Am</span>
-            </div>
-            
-            <!-- Desktop Nav -->
-            <div class="hidden md:flex space-x-2">
-                <button onclick="showView('home')" class="nav-btn px-4 py-2 text-sm transition-all text-stone-400 hover:text-stone-900" data-view="home">HOME</button>
-                <button onclick="showView('standard')" class="nav-btn px-4 py-2 text-sm transition-all text-stone-400 hover:text-stone-900" data-view="standard">STANDARD</button>
-                <button onclick="showView('quiz')" class="nav-btn px-4 py-2 text-sm transition-all text-stone-400 hover:text-stone-900" data-view="quiz">ASSESSMENT</button>
-            </div>
+<body class="bg-stone-50 text-stone-900">
 
-            <!-- Mobile Toggle -->
-            <button class="md:hidden z-[110] p-2" onclick="toggleMenu()">
-                <div id="menu-icon" class="w-6 h-4 relative flex flex-col justify-between items-end">
-                    <span class="h-0.5 bg-current w-full transition-all duration-300"></span>
-                    <span class="h-0.5 bg-current w-2/3 transition-all duration-300"></span>
-                    <span class="h-0.5 bg-current w-full transition-all duration-300"></span>
-                </div>
-            </button>
-        </nav>
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-stone-50/95 backdrop-blur border-b border-stone-200">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div onclick="showView('home')" class="cursor-pointer flex items-center gap-3">
+      <span class="text-3xl font-bold">∴IA</span>
+      <span class="uppercase tracking-[0.2em] text-xs font-black">Therefore I Am</span>
+    </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-stone-50 z-[105] opacity-0 pointer-events-none translate-y-4 flex flex-col pt-32 px-8">
-            <div class="flex flex-col space-y-12 items-center">
-                <button onclick="showView('home')" class="text-4xl font-bold serif tracking-tight text-stone-500 hover:text-stone-900">HOME</button>
-                <button onclick="showView('standard')" class="text-4xl font-bold serif tracking-tight text-stone-500 hover:text-stone-900">THE STANDARD</button>
-                <button onclick="showView('quiz')" class="text-4xl font-bold serif tracking-tight text-stone-500 hover:text-stone-900">ASSESSMENT</button>
-            </div>
-        </div>
-    </header>
+    <div class="hidden md:flex gap-6">
+      <button onclick="showView('home')" class="nav-btn text-stone-400">HOME</button>
+      <button onclick="showView('standard')" class="nav-btn text-stone-400">STANDARD</button>
+      <button onclick="showView('quiz')" class="nav-btn text-stone-400">ASSESSMENT</button>
+    </div>
+  </nav>
+</header>
 
-    <!-- Main Content -->
-    <main class="min-h-[80vh]">
-        
-        <!-- Home View -->
-        <section id="view-home" class="view-section active py-20 md:py-32 px-6 text-center max-w-2xl mx-auto flex flex-col items-center">
-            <div class="mb-8">
-                <h1 class="text-5xl md:text-8xl font-bold serif tracking-tighter leading-none">
-                    Human <span class="italic">Creative</span> Origin.
-                </h1>
-            </div>
-            <p class="text-lg md:text-xl text-stone-600 mb-10 leading-relaxed font-light">
-                <span class="font-bold">∴IA</span> certifies the origin of authorship. We provide a voluntary standard to distinguish works created by human ingenuity from those generated by machines.
-            </p>
-            <div class="flex flex-col w-full max-w-sm gap-4">
-                <button onclick="showView('quiz')" class="w-full px-10 py-5 bg-[#141414] text-white rounded-[2rem] hover:bg-black transition-all shadow-xl shadow-stone-200 uppercase tracking-widest text-xs font-bold">
-                    Verify Your Work
-                </button>
-                <button onclick="showView('standard')" class="w-full px-10 py-5 border border-stone-200 bg-white text-stone-800 rounded-[2rem] hover:bg-stone-50 transition-all uppercase tracking-widest text-xs font-bold animate-soft-pulse">
-                    Read the Standard
-                </button>
-            </div>
-        </section>
+<!-- MAIN -->
+<main>
 
-        <!-- Standard View -->
-        <section id="view-standard" class="view-section max-w-4xl mx-auto py-12 md:py-24 px-6">
-            <div class="border-b-4 border-stone-900 pb-12 mb-12">
-                <h2 class="text-4xl md:text-6xl font-bold serif mb-4 tracking-tighter uppercase">∴IA / ORIGIN — Standard</h2>
-                <div class="flex flex-wrap gap-x-8 gap-y-2 text-stone-400 font-mono text-[10px] md:text-xs uppercase tracking-widest">
-                    <span>Version 1.0</span>
-                    <span>Effective: 2025-12-25</span>
-                    <span>Authority: ∴IA</span>
-                </div>
-            </div>
-            
-            <div class="space-y-16">
-                <article>
-                    <h3 class="text-2xl font-bold mb-6 serif italic">1. Scope</h3>
-                    <p class="text-lg md:text-xl text-stone-600 leading-relaxed border-l-2 border-stone-100 pl-6 md:pl-10 font-light">
-                        This standard specifies requirements for certifying that a creative work is of human creative origin. It applies to photography, film, audio, written works, and digital media.
-                    </p>
-                </article>
+<!-- HOME -->
+<section id="view-home" class="view-section active py-24 px-6 text-center max-w-2xl mx-auto">
+  <h1 class="text-6xl md:text-8xl font-bold serif mb-8">
+    Human <span class="italic">Creative</span> Origin.
+  </h1>
 
-                <article>
-                    <h3 class="text-2xl font-bold mb-6 serif italic">2. Normative Principle</h3>
-                    <p class="text-lg md:text-xl text-stone-600 leading-relaxed border-l-2 border-stone-100 pl-6 md:pl-10 font-light">
-                        A work conforms to this standard when the primary creative decisions and final expressive content are determined by a human author. Tools may assist execution, but automation must not determine expressive substance.
-                    </p>
-                </article>
+  <p class="text-xl text-stone-600 mb-10">
+    <b>∴IA</b> certifies the origin of authorship — distinguishing human-created works from machine-generated content.
+  </p>
 
-                <article>
-                    <h3 class="text-2xl font-bold mb-6 serif italic">3. Conformance Levels</h3>
-                    <ul class="space-y-6">
-                        <li class="flex gap-4 p-6 bg-white rounded-2xl border border-stone-100 shadow-sm">
-                            <span class="text-stone-900 font-bold">•</span>
-                            <span class="text-stone-700 leading-relaxed font-medium"><b>HUMAN:</b> No generative AI used for expressive content. All elements directly human-authored.</span>
-                        </li>
-                        <li class="flex gap-4 p-6 bg-white rounded-2xl border border-stone-100 shadow-sm">
-                            <span class="text-stone-900 font-bold">•</span>
-                            <span class="text-stone-700 leading-relaxed font-medium"><b>HUMAN-LED:</b> Human authorship primary. AI used only for analysis or enhancement (noise reduction, etc.).</span>
-                        </li>
-                        <li class="flex gap-4 p-6 bg-white rounded-2xl border border-stone-100 shadow-sm">
-                            <span class="text-stone-900 font-bold">•</span>
-                            <span class="text-stone-700 leading-relaxed font-medium"><b>DISCLOSED:</b> Generative AI used, but fully disclosed. Human direction remains present.</span>
-                        </li>
-                    </ul>
-                </article>
+  <div class="flex flex-col gap-4 max-w-sm mx-auto">
+    <button onclick="showView('quiz')" class="px-10 py-5 bg-black text-white rounded-full uppercase tracking-widest text-xs font-bold">
+      Verify Your Work
+    </button>
 
-                <div class="bg-stone-900 text-white p-8 md:p-16 rounded-[2.5rem] shadow-2xl mt-12">
-                    <h3 class="text-2xl font-bold mb-4 serif italic">Disclaimer</h3>
-                    <p class="text-stone-400 text-sm leading-relaxed font-light">
-                        ∴IA is a voluntary certification mark and not a government authority. This standard certifies origin of authorship, not quality or legality.
-                    </p>
-                </div>
-            </div>
-        </section>
+    <button onclick="showView('standard')" class="px-10 py-5 border rounded-full uppercase tracking-widest text-xs font-bold animate-soft-pulse">
+      Read the Standard
+    </button>
+  </div>
+</section>
 
-        <!-- Quiz View -->
-        <section id="view-quiz" class="view-section py-12 px-6">
-            <div class="max-w-2xl mx-auto">
-                <div class="text-center mb-12">
-                    <span class="text-4xl block mb-2 serif">∴IA</span>
-                    <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-tighter serif">Self-Assessment</h2>
-                    <p class="text-stone-500 mt-2">Find out which ∴IA / ORIGIN mark applies to your work.</p>
-                </div>
+<!-- STANDARD -->
+<section id="view-standard" class="view-section max-w-4xl mx-auto py-24 px-6">
+  <h2 class="text-5xl font-bold serif mb-12 uppercase">∴IA / ORIGIN — Standard</h2>
 
-                <div id="quiz-container" class="bg-white shadow-2xl rounded-3xl overflow-hidden border border-stone-100">
-                    <!-- Questions injected here by JS -->
-                </div>
-            </div>
-        </section>
+  <div class="space-y-12">
+    <div>
+      <h3 class="text-2xl serif italic mb-4">1. Scope</h3>
+      <p class="text-stone-600">
+        This standard certifies that a creative work originates primarily from human authorship.
+      </p>
+    </div>
 
-    </main>
+    <div>
+      <h3 class="text-2xl serif italic mb-4">2. Principle</h3>
+      <p class="text-stone-600">
+        Tools may assist execution, but expressive decisions must be human-determined.
+      </p>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-stone-50 border-t border-stone-100 py-16 px-6 mt-20">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-center md:text-left">
-                <div class="text-xl font-black mb-1 uppercase tracking-[0.3em]">Therefore I Am</div>
-                <p class="text-stone-400 text-[10px] uppercase tracking-widest font-mono">Human Origin Protocol</p>
-            </div>
-            <div class="text-[10px] text-stone-300 font-mono tracking-widest uppercase">
-                © 2025 THEREFORE I AM
-            </div>
-        </div>
-    </footer>
+    <div>
+      <h3 class="text-2xl serif italic mb-4">3. Levels</h3>
+      <ul class="list-disc pl-6 space-y-2 text-stone-600">
+        <li><b>HUMAN</b> — No generative AI</li>
+        <li><b>HUMAN-LED</b> — AI as assistive tool only</li>
+        <li><b>DISCLOSED</b> — Generative AI used, fully disclosed</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // --- Navigation Logic ---
-        function showView(viewName) {
-            // Close mobile menu if open
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-            document.body.style.overflow = 'unset';
+<!-- QUIZ -->
+<section id="view-quiz" class="view-section py-24 px-6">
+  <div class="max-w-xl mx-auto text-center">
+    <h2 class="text-3xl font-bold serif mb-6">Self-Assessment</h2>
+    <div id="quiz-container" class="bg-white border rounded-3xl p-10 shadow-lg"></div>
+  </div>
+</section>
 
-            // Switch views
-            document.querySelectorAll('.view-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('view-' + viewName).classList.add('active');
+</main>
 
-            // Update Nav Buttons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.dataset.view === viewName) {
-                    btn.classList.add('text-stone-900', 'font-bold', 'border-b-2', 'border-stone-900');
-                    btn.classList.remove('text-stone-400');
-                } else {
-                    btn.classList.remove('text-stone-900', 'font-bold', 'border-b-2', 'border-stone-900');
-                    btn.classList.add('text-stone-400');
-                }
-            });
+<!-- FOOTER -->
+<footer class="border-t py-12 text-center text-xs tracking-widest text-stone-400">
+  © 2025 THEREFORE I AM
+</footer>
 
-            window.scrollTo(0, 0);
+<script>
+  function showView(view) {
+    document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + view).classList.add('active');
 
-            // If switching to quiz, reset it
-            if(viewName === 'quiz') startQuiz();
-        }
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('text-stone-900','font-bold'));
+    document.querySelectorAll(`[onclick="showView('${view}')"]`).forEach(b => b.classList.add('text-stone-900','font-bold'));
 
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const iconParts = document.getElementById('menu-icon').children;
-            const isOpen = menu.classList.contains('opacity-100');
+    if (view === 'quiz') startQuiz();
+    window.scrollTo(0,0);
+  }
 
-            if (isOpen) {
-                menu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-                menu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-                document.body.style.overflow = 'unset';
-                iconParts[0].classList.remove('rotate-45', 'translate-y-[7px]');
-                iconParts[1].classList.remove('opacity-0');
-                iconParts[2].classList.remove('-rotate-45', '-translate-y-[7px]');
-            } else {
-                menu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-                menu.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-                document.body.style.overflow = 'hidden';
-                iconParts[0].classList.add('rotate-45', 'translate-y-[7px]');
-                iconParts[1].classList.add('opacity-0');
-                iconParts[2].classList.add('-rotate-45', '-translate-y-[7px]');
-            }
-        }
+  const questions = [
+    {
+      text: "Did you use generative AI to create the expressive content?",
+      options: [
+        { label: "No", result: "HUMAN" },
+        { label: "Yes, assistive only", result: "HUMAN-LED" },
+        { label: "Yes, generative", result: "DISCLOSED" }
+      ]
+    }
+  ];
 
-        // --- Quiz Logic ---
-        const questions = [
-            {
-                id: 'q1',
-                text: "Did you use any generative AI systems to produce the final expressive content (images, writing, audio, etc.)?",
-                options: [
-                    { label: "No, none at all.", nextId: "q2" },
-                    { label: "Yes, for minor parts.", nextId: "q3" },
-                    { label: "Yes, it was a major part of the creation.", nextId: "q4" }
-                ]
-            },
-            {
-                id: 'q2',
-                text: "Were all expressive elements directly authored, captured, or performed by a human?",
-                options: [
-                    { label: "Yes, completely.", result: "HUMAN" },
-                    { label: "No, some parts were generated.", result: "NON_CONFORMANT" }
-                ]
-            },
-            {
-                id: 'q3',
-                text: "Did you use AI solely for analysis or enhancement (e.g., noise reduction, upscaling, spell-check)?",
-                options: [
-                    { label: "Yes, human authorship remains primary.", result: "HUMAN-LED" },
-                    { label: "No, AI actually generated new content.", nextId: "q4" }
-                ]
-            },
-            {
-                id: 'q4',
-                text: "Are you willing to fully disclose the use of generative AI in this work?",
-                options: [
-                    { label: "Yes, I will disclose it.", result: "DISCLOSED" },
-                    { label: "No, I'd rather not say.", result: "NON_CONFORMANT" }
-                ]
-            }
-        ];
+  function startQuiz() {
+    const q = questions[0];
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = `
+      <p class="text-lg mb-6">${q.text}</p>
+      ${q.options.map(o => `
+        <button onclick="showResult('${o.result}')" class="block w-full mb-3 px-6 py-4 border rounded-xl hover:bg-stone-50">
+          ${o.label}
+        </button>
+      `).join('')}
+    `;
+  }
 
-        function startQuiz() {
-            renderQuestion('q1');
-        }
+  function showResult(r) {
+    document.getElementById('quiz-container').innerHTML = `
+      <h3 class="text-2xl font-bold mb-4">Result: ${r}</h3>
+      <button onclick="startQuiz()" class="mt-6 px-6 py-3 bg-black text-white rounded-full text-xs uppercase">
+        Restart
+      </button>
+    `;
+  }
+</script>
 
-        function renderQuestion(id) {
-            const question = questions.find(q => q.id === id);
-            const container = document.getElementById('quiz-container');
-            
-            let optionsHtml = question.options.map((opt, index) => `
-                <button onclick="handleOption('${id}', ${index})" class="w-full text-left p-6 rounded-2xl border-2 border-stone-50 hover:border-stone-900 hover:bg-stone-50 transition-all group flex justify-between items-center">
-                    <span class="font-medium text-lg">${opt.label}</span>
-                    <i class="fas fa-chevron-right text-stone-200 group-hover:text-stone-900 transition-colors"></i>
-                </button>
-            `).join('');
-
-            container.innerHTML = `
-                <div class="p-8 md:p-12 animate-in fade-in zoom-in-95 duration-300">
-                    <h4 class="text-xl md:text-2xl font-medium mb-10 text-stone-800 leading-snug">
-                        ${question.text}
-                    </h4>
-                    <div class="space-y-4">
-                        ${optionsHtml}
-                    </div>
-                </div>
-            `;
-        }
-
-        function handleOption(questionId, optionIndex) {
-            const question = questions.find(q => q.id === questionId);
-            const option = question.options[optionIndex];
-
-            if (option.result) {
-                renderResult(option.result);
-            } else if (option.nextId) {
-                renderQuestion(option.nextId);
-            }
-        }
-
-        function renderResult(level) {
-            const container = document.getElementById('quiz-container');
-            const configs = {
-                "HUMAN": { 
-                    color: "bg-emerald-50 border-emerald-500 text-emerald-900", 
-                    icon: "fa-certificate",
-                    desc: "Your work appears to qualify for the ∴IA / ORIGIN — HUMAN mark. It is entirely of human origin." 
-                },
-                "HUMAN-LED": { 
-                    color: "bg-sky-50 border-sky-500 text-sky-900", 
-                    icon: "fa-certificate",
-                    desc: "Your work appears to qualify for the ∴IA / ORIGIN — HUMAN-LED mark. AI was used as a tool, but you provided the creative substance." 
-                },
-                "DISCLOSED": { 
-                    color: "bg-amber-50 border-amber-500 text-amber-900", 
-                    icon: "fa-certificate",
-                    desc: "Your work qualifies for the ∴IA / ORIGIN — DISCLOSED mark. Generative AI was used, and disclosure is required." 
-                },
-                "NON_CONFORMANT": { 
-                    color: "bg-stone-50 border-stone-500 text-stone-900", 
-                    icon: "fa-circle-exclamation",
-                    desc: "Based on your answers, this work may not conform to the ∴IA / ORIGIN standard in its current state." 
-                }
-            };
-
-            const config = configs[level];
-
-            container.innerHTML = `
-                <div class="p-8 md:p-16 border-l-8 ${config.color} transition-all duration-500">
-                    <h3 class="text-3xl font-bold mb-6 flex items-center">
-                        <i class="fas ${config.icon} mr-4 text-2xl"></i>
-                        Result: ${level}
-                    </h3>
-                    <p class="text-xl leading-relaxed mb-10 opacity-80">
-                        ${config.desc}
-                    </p>
-                    <button onclick="startQuiz()" class="px-10 py-4 bg-stone-900 text-white rounded-full hover:bg-black transition-all uppercase tracking-widest text-xs font-bold shadow-lg">
-                        Start Over
-                    </button>
-                </div>
-            `;
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            showView('home');
-        });
-    </script>
 </body>
 </html>
