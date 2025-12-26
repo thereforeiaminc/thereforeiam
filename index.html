@@ -92,22 +92,26 @@
 <body class="bg-stone-50 text-stone-900 selection:bg-stone-900 selection:text-white">
 
     <!-- Header Navigation -->
+    Yes, that is the correct start of your header.
+
+Here is the exact code block showing **where to close the header** and **where to paste the mobile menu** so it is no longer trapped by the blur effect.
+
+Replace your current `<header>...</header>` section with this structure:
+
+```html
     <header class="sticky top-0 z-[100] bg-stone-50/90 backdrop-blur-md border-b border-stone-200">
         <nav class="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
-            <!-- Logo -->
             <div class="flex items-center space-x-3 cursor-pointer group z-[110]" onclick="showView('home')">
                 <span class="text-2xl md:text-3xl font-bold tracking-tighter transition-transform group-hover:scale-105">∴IA</span>
                 <span class="uppercase tracking-[0.2em] text-[10px] md:text-xs font-black text-stone-900 whitespace-nowrap hidden sm:block">Therefore I Am</span>
             </div>
             
-            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-1">
                 <button onclick="showView('home')" class="nav-btn px-4 py-2 text-[11px] font-bold tracking-widest transition-all text-stone-400 hover:text-stone-900" data-view="home">HOME</button>
                 <button onclick="showView('standard')" class="nav-btn px-4 py-2 text-[11px] font-bold tracking-widest transition-all text-stone-400 hover:text-stone-900" data-view="standard">THE STANDARD</button>
                 <button onclick="showView('quiz')" class="nav-btn px-4 py-2 text-[11px] font-bold tracking-widest transition-all text-stone-400 hover:text-stone-900" data-view="quiz">ASSESSMENT</button>
             </div>
 
-            <!-- Mobile Toggle -->
             <button class="md:hidden z-[110] p-2" onclick="toggleMenu()" aria-label="Toggle Menu">
                 <div id="menu-icon" class="w-6 h-4 relative flex flex-col justify-between items-end">
                     <span class="h-0.5 bg-current w-full transition-all duration-300 origin-right"></span>
@@ -116,22 +120,20 @@
                 </div>
             </button>
         </nav>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-stone-50 z-[105] opacity-0 pointer-events-none -translate-y-4 flex flex-col pt-32 px-10">
-            <div class="flex flex-col space-y-10 items-center text-center">
-                <button onclick="showView('home')" class="text-4xl font-bold serif tracking-tight text-stone-400 hover:text-stone-900">HOME</button>
-                <button onclick="showView('standard')" class="text-4xl font-bold serif tracking-tight text-stone-400 hover:text-stone-900">STANDARD</button>
-                <button onclick="showView('quiz')" class="text-4xl font-bold serif tracking-tight text-stone-400 hover:text-stone-900">ASSESSMENT</button>
-            </div>
-            <div class="mt-auto mb-12 text-center">
-                <p class="text-[10px] tracking-[0.3em] font-black uppercase text-stone-400">Human Origin Protocol</p>
-            </div>
+    </header> <div id="mobile-menu" class="md:hidden fixed inset-0 bg-stone-50 z-[105] opacity-0 pointer-events-none -translate-y-4 flex flex-col pt-32 px-10 overflow-y-auto max-h-screen">
+        <div class="flex flex-col space-y-10 items-center text-center">
+            <button onclick="showView('home')" class="text-4xl font-bold serif tracking-tight text-stone-400 hover:text-stone-900">HOME</button>
+            <button onclick="showView('standard')" class="text-4xl font-bold serif tracking-tight text-stone-400 hover:text-stone-900">STANDARD</button>
+            <button onclick="showView('quiz')" class="text-4xl font-bold serif tracking-tight text-stone-400 hover:text-stone-900">ASSESSMENT</button>
         </div>
-    </header>
+        <div class="mt-auto mb-12 text-center pb-10">
+            <p class="text-[10px] tracking-[0.3em] font-black uppercase text-stone-400">Human Origin Protocol</p>
+        </div>
+    </div>
 
-    <!-- Main Content Area -->
     <main>
+
+```
         
         <!-- HOME SECTION -->
         <section id="view-home" class="view-section active">
