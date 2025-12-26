@@ -254,11 +254,15 @@
 
     <script>
         // --- VIEW MANAGEMENT LOGIC ---
-        function showView(viewId) {
-            // Close mobile menu
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
-            document.body.style.overflow = 'unset';
+function showView(viewId) {
+    // Close mobile menu
+    const menu = document.getElementById('mobile-menu');
+    // REMOVE the 'Open' classes first (This is what was missing):
+    menu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+    // ADD the 'Closed' classes:
+    menu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+    
+    document.body.style.overflow = 'unset';
 
             // Reset menu icon
             const iconParts = document.getElementById('menu-icon').children;
