@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import Assessment from './components/Assessment';
+import Assessment from './Assessment'; // Changed from './components/Assessment'
 import { STANDARD_CONTENT } from './constants';
 
 const App: React.FC = () => {
@@ -73,7 +73,6 @@ const App: React.FC = () => {
           }`}
         >
           <div className="h-full flex flex-col pt-24 px-8">
-            {/* Editorial Watermark Style - Darkened text-stone-300 to text-stone-500 */}
             <div className="relative flex items-center justify-center mb-16">
               <div className="absolute w-full h-[1px] bg-stone-200"></div>
               <span className="relative bg-stone-50 px-4 text-stone-500 text-3xl font-bold serif tracking-widest uppercase italic">
@@ -114,7 +113,6 @@ const App: React.FC = () => {
       <main className={`flex-grow transition-all duration-500 ${isMenuOpen ? 'blur-md scale-[0.98] opacity-50' : 'blur-0 scale-100 opacity-100'}`}>
         {view === 'home' && (
           <div className="animate-in fade-in duration-1000">
-            {/* Hero Section */}
             <section className="py-20 md:py-32 px-6 text-center max-w-2xl mx-auto flex flex-col items-center">
               <div className="mb-8">
                 <h1 className="text-5xl md:text-8xl font-bold serif tracking-tighter leading-none">
